@@ -1,3 +1,4 @@
+<%= link_to "← Back", root_path, class: "block mb-4 no-underline text-xs text-blue-500" %>
 <div class="mb-4 flex justify-between items-center">
     <h1 class="mb-0"> 
         <%= @password.url %> 
@@ -9,7 +10,8 @@
     </h1>
     <%= link_to "Edit", edit_password_path %>
 </div>
-<h6> Username / Email </h6>
+<h3> Credentials </h3>
+<h6 class="text-xs mb-1"> Username / Email </h6>
 <div class="flex items-center gap-1">
     <pre class="my-0 flex-grow"><code><%= @password.username %></code></pre>
     <%= button_tag class: "px-5 py-3 bg-gray-200 rounded", data: { controller: "clipboard", action: "click->clipboard#copy", clipboard_content_value: @password.username } do %>
@@ -18,7 +20,7 @@
         </svg>
     <% end %> 
 </div>
-<h6> Password </h6>
+<h6 class="text-xs mb-1 mt-4"> Password </h6>
 <div class="flex items-center gap-1">
     <pre class="my-0 flex-grow"><code><%= @password.password %></code></pre>
     <%= button_tag class: "px-5 py-3 bg-gray-200 rounded", data: { controller: "clipboard", action: "click->clipboard#copy", clipboard_content_value: @password.password } do %>
@@ -26,4 +28,16 @@
         <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
         </svg>
     <% end %> 
+</div>
+
+<h3> Share </h3>
+<%= link_to "Add a user", new_password_share_path(@password) %>
+
+<div class="flex flex-col gap-1 divide-y divide-gray-100">
+    <% @password.users.excluding(current_user).each do |user| %>
+        <div class="flex justify-between items-center">
+            <div><%= user.email %></div>
+            <%= button_to "Remove", password_share_path(@password, user), method: :delete, data: {turbo_confirm: "Are you sure?"} %>
+        </div>
+    <% end %>
 </div>

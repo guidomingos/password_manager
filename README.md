@@ -1,24 +1,33 @@
-# README
+# Password Manager
+Application using Ruby on Rails -> https://password-manager-domingos.fly.dev/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Getting Started
 
-Things you may want to cover:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-* Ruby version
+## Prerequisites
+* [Ruby](https://www.ruby-lang.org/en/downloads/)
+* [Rails](https://rubyonrails.org/)
+* [Bundler](https://bundler.io/)
 
-* System dependencies
+## Installation
 
-* Configuration
+1. Clone the repository: `git clone https://github.com/guidomingos/password_manager.git`
+2. Navigate to the directory: `cd password_manager`
+3. Install the required dependencies: `bundle install`
+4. Set up the database: `rails db:migrate`
+5. Start the server rails server `bin/dev`
 
-* Database creation
+The server should now be running at http://localhost:3000.
 
-* Database initialization
+## Usage
 
-* How to run the test suite
+Local environment is set to use postgre as database.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Next features / implementations
 
-* Deployment instructions
+* Improve UI/UX
 
-* ...
+## Contact
+
+* guilherme63@gmail.com 
